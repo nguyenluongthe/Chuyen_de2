@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tàu Phớ Ngon Lành - Giới thiệu sản phẩm</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: #faf7f2;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid #eee;
+      backdrop-filter: blur(6px);
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: #d98032;
+    }
+
+    nav a {
+      margin-left: 16px;
+      text-decoration: none;
+      color: #444;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #d98032;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 40px 0 60px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+      color: #1f2933;
+    }
+
+    .hero-text h1 span {
+      color: #d98032;
+    }
+
+    .hero-text p {
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .badge {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #f3c89e;
+      background: #fff7ec;
+      font-size: 0.8rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: none;
+      background: #d98032;
+      color: #fff;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+    }
+
+    .hero-image {
+      background: linear-gradient(135deg, #ffe8c8, #fff);
+      border-radius: 24px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    .hero-image-circle {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      margin: 0 auto 14px;
+      background: radial-gradient(circle, #fff 0%, #ffe3b5 60%, #f7c58a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #8a4b10;
+      font-size: 1.1rem;
+    }
+
+    .hero-image small {
+      font-size: 0.8rem;
+      color: #555;
+    }
+
+    /* Sections */
+    section {
+      padding: 40px 0;
+    }
+
+    section h2 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+      color: #1f2933;
+    }
+
+    section p.section-intro {
+      margin-bottom: 24px;
+      color: #555;
+      max-width: 650px;
+    }
+
+    /* Giới thiệu */
+    .two-columns {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 24px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 18px 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+      border: 1px solid #f2e2cf;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+      color: #d98032;
+    }
+
+    .card ul {
+      margin-left: 18px;
+      margin-top: 6px;
+    }
+
+    .card ul li {
+      margin-bottom: 4px;
+    }
+
+    /* Menu sản phẩm */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .menu-item {
+      background: #fff;
+      border-radius: 18px;
+      padding: 16px;
+      border: 1px solid #f3e1cd;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+    }
+
+    .menu-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 6px;
+    }
+
+    .menu-item-title {
+      font-weight: 600;
+      color: #1f2933;
+    }
+
+    .menu-item-price {
+      font-weight: 700;
+      color: #d98032;
+    }
+
+    .menu-item-desc {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    .menu-item-tag {
+      font-size: 0.8rem;
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #fff7ec;
+      border: 1px solid #f3c89e;
+    }
+
+    /* Lợi ích */
+    .benefits {
+      display: grid;
+      gap: 12px;
+    }
+
+    .benefits li {
+      list-style: none;
+      padding-left: 24px;
+      position: relative;
+      font-size: 0.95rem;
+    }
+
+    .benefits li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #d98032;
+      font-weight: 700;
+    }
+
+    /* Liên hệ */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 24px;
+    }
+
+    .contact-info p {
+      margin-bottom: 6px;
+    }
+
+    .contact-form label {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 16px 0 24px;
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .two-columns,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        display: none; /* Đơn giản cho bản mobile, sau này có thể làm menu mobile */
+      }
+
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container navbar">
+      <div class="logo">Tàu Phớ Nhà Làm</div>
+      <nav>
+        <a href="#gioi-thieu">Giới thiệu</a>
+        <a href="#menu">Menu</a>
+        <a href="#loi-ich">Lợi ích</a>
+        <a href="#lien-he">Liên hệ</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main class="container">
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Tàu phớ <span>mịn màng</span>, ngọt dịu & mát lạnh</h1>
+        <p>
+          Món tráng miệng thanh mát từ 100% đậu nành nguyên chất, phù hợp cho mọi lứa tuổi.
+          Thưởng thức tàu phớ tươi mỗi ngày ngay tại khu vực của bạn.
+        </p>
+        <div class="hero-badges">
+          <div class="badge">Không chất bảo quản</div>
+          <div class="badge">Ít đường, tốt cho sức khỏe</div>
+          <div class="badge">Nguyên liệu chọn lọc</div>
+        </div>
+        <a href="#menu" class="btn-primary">Xem Menu & Giá</a>
+      </div>
+
+      <div class="hero-image">
+      
+        <img src="logo_tau_hủ.jpg" />
+      </div>
+    </section>
+
+    <!-- Giới thiệu -->
+    <section id="gioi-thieu">
+      <h2>Giới thiệu về tàu phớ / tàu hũ</h2>
+      <p class="section-intro">
+        Tàu phớ (tàu hũ) là món ăn truyền thống được làm từ đậu nành, kết hợp cùng nước đường
+        ngọt thanh, gừng ấm hoặc topping hiện đại như trân châu, thạch, cốt dừa. Chúng tôi mang đến
+        cho bạn phiên bản tàu phớ <strong>tươi – sạch – ít ngọt</strong> phù hợp với xu hướng sống lành mạnh.
+      </p>
+
+      <div class="two-columns">
+        <div class="card">
+          <h3>Điểm nổi bật</h3>
+          <ul>
+            <li>Đậu nành chọn lọc, không biến đổi gen.</li>
+            <li>Nấu mới mỗi ngày, đảm bảo độ tươi ngon.</li>
+            <li>Cân chỉnh độ ngọt vừa phải, không gây ngán.</li>
+            <li>Phù hợp cho người ăn chay, người hạn chế sữa động vật.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Thông tin nhanh</h3>
+          <ul>
+            <li><strong>Giờ bán:</strong> 6:00 – 17:00 mỗi ngày.</li>
+            <li><strong>Khu vực giao:</strong> Toàn thành phố Đà Nẵng</li>
+            <li><strong>Liên hệ đặt hàng nhanh:</strong>  096649167</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu sản phẩm -->
+    <section id="menu">
+      <h2>Menu tàu phớ / tàu hũ</h2>
+      <p class="section-intro">
+        Bạn có thể tuỳ chọn topping theo sở thích. Dưới đây là một số gợi ý combo được khách hàng ưa chuộng.
+        Giá chỉ mang tính minh họa, bạn hãy sửa lại theo thực tế.
+      </p>
+
+      <div class="menu-grid">
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <span class="menu-item-title">Tàu phớ nước đường gừng</span>
+            <span class="menu-item-price">15.000đ</span>
+          </div>
+          <p class="menu-item-desc">
+            Tàu phớ mềm mịn, ăn kèm nước đường gừng ấm, thơm nhẹ, thích hợp cho buổi tối mát trời.
+          </p>
+          <span class="menu-item-tag">Truyền thống</span>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <span class="menu-item-title">Tàu phớ cốt dừa + trân châu</span>
+            <span class="menu-item-price">20.000đ</span>
+          </div>
+          <p class="menu-item-desc">
+            Kết hợp vị béo nhẹ của cốt dừa và độ dai của trân châu, phù hợp cho giới trẻ.
+          </p>
+          <span class="menu-item-tag">Bán chạy</span>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <span class="menu-item-title">Tàu phớ thập cẩm</span>
+            <span class="menu-item-price">25.000đ</span>
+          </div>
+          <p class="menu-item-desc">
+            Gồm tàu phớ + trân châu + thạch + hạt sen (hoặc topping bạn có), “full topping” cho người lần đầu thử.
+          </p>
+          <span class="menu-item-tag">Full topping</span>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-header">
+            <span class="menu-item-title">Sữa đậu nành</span>
+            <span class="menu-item-price">5.000đ</span>
+          </div>
+          <p class="menu-item-desc">
+            Truyền thống và cổ điển thức uống từ đậu nành.
+          </p>
+          <span class="menu-item-tag">Hiện đại</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lợi ích -->
+    <section id="loi-ich">
+      <h2>Lợi ích khi thưởng thức tàu phớ</h2>
+      <p class="section-intro">
+        Không chỉ là món ăn vặt giải nhiệt, tàu phớ còn mang lại nhiều lợi ích cho sức khỏe nếu được chế biến đúng cách.
+      </p>
+      <ul class="benefits">
+        <li>Giàu protein thực vật – hỗ trợ duy trì năng lượng, tốt cho cơ bắp.</li>
+        <li>Ít chất béo bão hòa – phù hợp với người ăn kiêng, người lớn tuổi.</li>
+        <li>Nhiều canxi và khoáng chất từ đậu nành, tốt cho xương.</li>
+        <li>Có thể thay thế các món tráng miệng nhiều đường, nhiều chất béo.</li>
+      </ul>
+    </section>
+
+    <!-- Liên hệ -->
+    <section id="lien-he">
+      <h2>Liên hệ & Đặt hàng</h2>
+      <p class="section-intro">
+        Bạn có thể ghé trực tiếp quán, gọi điện hoặc nhắn tin qua mạng xã hội để đặt tàu phớ.
+      </p>
+
+      <div class="contact-grid">
+        <div class="card contact-info">
+          <h3>Thông tin liên hệ</h3>
+          <p><strong>Địa chỉ:</strong> Trước Trường Công Nghệ Thông tin và Truyền thông Việt - Hàn, Đà Nẵng</p>
+          <p><strong>Điện thoại:</strong> 096649167</p>
+          <p><strong>Facebook:</strong>https://www.facebook.com/the.nguyen.914865</p>
+          <p><strong>Zalo:</strong> 096649167</p>
+          <p><strong>Giờ mở cửa:</strong> 5:00 – 1700 (tất cả các ngày trong tuần)</p>
+        </div>
+
+        <div class="card contact-form">
+          <h3>Gửi yêu cầu đặt hàng</h3>
+          <form onsubmit="handleSubmit(event)">
+            <label for="name">Họ tên</label>
+            <input id="name" type="text" placeholder="Nhập họ tên của bạn" required />
+
+            <label for="phone">Số điện thoại</label>
+            <input id="phone" type="tel" placeholder="Nhập số điện thoại" required />
+
+            <label for="message">Nội dung / Ghi chú</label>
+            <textarea id="message" placeholder="Ví dụ: Đặt 3 ly tàu phớ thập cẩm giao khu vực ..."></textarea>
+
+            <button type="submit" class="btn-primary">Gửi yêu cầu</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Tàu Phớ Nhà Làm 🍮
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      alert("Cảm ơn bạn đã để lại thông tin! Chúng tôi sẽ liên hệ sớm nhất.");
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
